@@ -9,8 +9,7 @@
         SELECT AUCNG_NO, AUCNG_DE
         FROM TEMP_TABLE
     </select>
-    
-    
+        
     <select id="selectMenuList" resultType="hashMap">
         SELECT A.menu_id
 			 , A.mnnm_cntn AS menu_nm
@@ -18,22 +17,14 @@
 			 , A.sort_sq
 			 , A.pgid
 			 , A.uyn
-			 , CASE WHEN A.menu_lvl_c = '1' THEN A.menu_id
-				    ELSE SUBSTRING(A.menu_id, 1, 2) + '0000'
-			        END AS fst_menu_id
-			 , CASE WHEN A.menu_lvl_c = '1' THEN A.mnnm_cntn
-			  	    ELSE (SELECT mnnm_cntn FROM TB_LA_IS_MM_MENU WHERE menu_id = SUBSTRING(A.menu_id, 1, 2) + '0000')
-				    END AS fst_menu_nm
-			 , CASE WHEN A.menu_lvl_c = '1' THEN ''
-			 	    WHEN A.menu_lvl_c = '2' THEN A.menu_id
+			 , CASE WHEN A.menu_lvl_c = '2' THEN A.menu_id
 					WHEN A.menu_lvl_c = '3' THEN SUBSTRING(A.menu_id, 1, 4) + '00'
 				    END AS scd_menu_id
-			 , CASE WHEN A.menu_lvl_c = '1' THEN ''
-					WHEN A.menu_lvl_c = '2' THEN A.mnnm_cntn
+			 , CASE WHEN A.menu_lvl_c = '2' THEN A.mnnm_cntn
 					WHEN A.menu_lvl_c = '3' THEN  (SELECT mnnm_cntn FROM TB_LA_IS_MM_MENU WHERE menu_id = SUBSTRING(A.menu_id, 1, 4) + '00')
 				    END AS scd_menu_nm
-			  , '' AS lvl
 		  FROM TB_LA_IS_MM_MENU A
+		 WHERE A.menu_lvl_c != '1'
     </select>
 
 </mapper>

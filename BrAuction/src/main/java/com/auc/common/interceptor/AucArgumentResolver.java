@@ -36,14 +36,12 @@ private static Logger log = LoggerFactory.getLogger(AucArgumentResolver.class);
 		
 		ResolverMap rMap = new ResolverMap();
 		
-		//Iterator<String> iter = webRequest.getHeaderNames();
-		
 		Iterator<String> iter = webRequest.getParameterNames();
 		while(iter.hasNext()) {
 			String paraName = iter.next();
 			String paraValue = webRequest.getParameter(paraName);
 			rMap.put(paraName, paraValue);
-			log.info("paraName : " + paraName + " paraValue : " + paraValue);
+			//log.info("paraName : " + paraName + " paraValue : " + paraValue);
 		}
 
 		return rMap;

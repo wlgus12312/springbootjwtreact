@@ -7,6 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.CacheControl;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -17,6 +19,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.auc.common.interceptor.AucArgumentResolver;
 import com.auc.common.interceptor.LoginInterceptor;
+import com.auc.common.vo.LoginUser;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
@@ -25,10 +28,9 @@ public class WebConfig implements WebMvcConfigurer {
 
 	@Autowired
 	LoginInterceptor loginInterceptor;
-	
+		
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		
 		registry.addInterceptor(loginInterceptor)
 		        //.excludePathPatterns("/**/*.js")
 		        .addPathPatterns("/*");
@@ -44,11 +46,11 @@ public class WebConfig implements WebMvcConfigurer {
 		return new MappingJackson2JsonView();
 	}
 		
-	 @Override
-	    public void addCorsMappings(CorsRegistry registry) {
-	        registry.addMapping("/**")
-	                .allowedOrigins("http://localhost:3000");
-	    }
-	
+//	@Override
+//    public void addCorsMappings(CorsRegistry registry) {
+//        registry.addMapping("/**")
+//                .allowedOrigins("http://localhost:3000");
+//    }
+
 	
 }

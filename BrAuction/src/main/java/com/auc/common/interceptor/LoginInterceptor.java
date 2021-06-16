@@ -1,5 +1,6 @@
 package com.auc.common.interceptor;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,6 +10,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.auc.common.vo.LoginUser;
+
+
 @Component
 public class LoginInterceptor implements HandlerInterceptor{
 	
@@ -16,11 +20,11 @@ public class LoginInterceptor implements HandlerInterceptor{
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-				
-		log.info("#########      interceptor");
 		
 //		String sessionYn = (String) httpSession.getAttribute("login_yn");
-//		
+				
+		log.info("interceptor ");
+
 //		if(sessionYn.equals("")) {
 //			return false;
 //		}		
@@ -33,13 +37,11 @@ public class LoginInterceptor implements HandlerInterceptor{
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 	                       ModelAndView modelAndView) throws Exception {
 	        // TODO Auto-generated method stub
-	        
     }
  
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
         // TODO Auto-generated method stub
-        
     }
 }

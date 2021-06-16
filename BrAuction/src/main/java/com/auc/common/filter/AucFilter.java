@@ -38,15 +38,11 @@ public class AucFilter implements Filter{
 
 		String path = req.getServletPath();
 		
-		log.info("###### path : " + path);
-		
 	    if(!excludedUrls.contains(path))
 	    {
-	    	log.info("###### AucFilter start");
 			chain.doFilter(request, response);
-			log.info("###### AucFilter end");
 	    }else {
-	    	log.info("###### excludedUrls");
+	    	//
 	    }    	
     	
 	}

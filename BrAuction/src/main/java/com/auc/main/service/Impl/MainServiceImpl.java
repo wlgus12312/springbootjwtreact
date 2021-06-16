@@ -33,7 +33,7 @@ public class MainServiceImpl implements MainService{
 	public List<Map<Object, Object>> selectMenuList() throws Exception {
 		
 		List<Map<Object, Object>> reList = null;
-		
+				
 		reList = mainMapper.selectMenuList();
 		
 		return reList;

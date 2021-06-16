@@ -40,30 +40,10 @@ public class MainController {
 	@Resource
 	LoginUser loginUser;
 	
-	@GetMapping("/{name}")
-	public ModelAndView main(@PathVariable String name, ResolverMap resolverMap) throws Exception{
-		
-		log.info(name);
-		
-		ModelAndView mv = new ModelAndView();		
-		mv.addObject("pageName", name);
-		mv.setViewName("/main/page");				
-		return mv;
-	}
-	
-	
     @PostMapping("/api/test")
 	public Map<Object, Object> test(ResolverMap resolverMap) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		//List<HashMap<Object, Object>> list = null;
-		
-		//list = mainService.selectData();
-//		mv.addObject("success", true);
-//		mv.addObject("list", list);
-//		mv.setViewName("jsonView");
-		
-		log.info("resolverMap : " + resolverMap.toString());
 		
 		List<HashMap<Object, Object>> reList = new ArrayList<HashMap<Object, Object>>();
 		
@@ -90,9 +70,7 @@ public class MainController {
     	List<Map<Object, Object>> reList = null;
     	
     	reList = mainService.selectMenuList();
-    	
-    	log.info(reList.toString());
-    	
+    	    	
     	Map<Object, Object> reMap = new HashMap<Object, Object>();
     	
     	reMap.put("menuList", reList);
@@ -100,6 +78,49 @@ public class MainController {
     	return reMap;
     	
     }	
+    
+    @RequestMapping(value="/api/login", method=RequestMethod.POST)
+    public  Map<Object, Object> login()throws Exception{
+    	
+    	Map<Object, Object> reMap = new HashMap<Object, Object>();
+    	
+    	loginUser.setId("test");
+    	
+    	log.info("login@@@@@" + loginUser.getId());
+    	
+    	reMap.put("data", "login");
+    	
+    	return reMap;
+    }
+    
+    @RequestMapping(value="/api/check", method=RequestMethod.POST)
+    public  Map<Object, Object> check()throws Exception{
+    	
+    	Map<Object, Object> reMap = new HashMap<Object, Object>();
+    	
+    	log.info("check@@@@@" + loginUser.getId());
+    	
+    	reMap.put("data", "check");
+    	
+    	return reMap;
+    }
+    
+    @RequestMapping(value="/api/testView", method=RequestMethod.POST)
+    public String testView()throws Exception{
+    	
+    	String t = "12345678 asdasd";
+    	int tCnt = t.indexOf(" ");
+    	
+    	t.substring(0, tCnt);
+    	
+    	log.info(t.substring(tCnt+1, t.length()));
+    	
+    	
+    	return "testView";
+    }
+    
+    
+    
     
 
 }
