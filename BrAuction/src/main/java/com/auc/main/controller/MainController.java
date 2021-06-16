@@ -41,8 +41,11 @@ public class MainController {
 	LoginUser loginUser;
 	
     @PostMapping("/api/test")
+    @RequestMapping(value="/api/test", method=RequestMethod.POST)
 	public Map<Object, Object> test(ResolverMap resolverMap) throws Exception{
 		
+    	log.info(resolverMap.toString());
+    	
 		ModelAndView mv = new ModelAndView();
 		
 		List<HashMap<Object, Object>> reList = new ArrayList<HashMap<Object, Object>>();
@@ -64,7 +67,7 @@ public class MainController {
 		return reMap;
 	}
     
-    @PostMapping("/api/menuList")
+    @RequestMapping(value="/api/menuList", method=RequestMethod.POST)
 	public Map<Object, Object> menuList() throws Exception{
     
     	List<Map<Object, Object>> reList = null;

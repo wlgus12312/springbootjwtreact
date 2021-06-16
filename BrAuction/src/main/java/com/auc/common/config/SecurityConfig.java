@@ -19,7 +19,9 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.auc.common.exception.JwtAuthenticationEntryPoint;
+import com.auc.common.filter.AucFilter;
 import com.auc.common.filter.JwtRequestFilter;
+import com.auc.common.interceptor.LoginInterceptor;
 
 @Configuration
 @EnableWebSecurity
@@ -82,10 +84,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 anyRequest().authenticated().and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             // stateless session exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
             
-
         // Add a filter to validate the tokens with every request
 		http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-		
 		
 		
     }

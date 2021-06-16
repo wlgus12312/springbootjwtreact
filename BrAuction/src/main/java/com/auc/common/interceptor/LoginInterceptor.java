@@ -23,8 +23,6 @@ public class LoginInterceptor implements HandlerInterceptor{
 		
 //		String sessionYn = (String) httpSession.getAttribute("login_yn");
 				
-		log.info("interceptor ");
-
 //		if(sessionYn.equals("")) {
 //			return false;
 //		}		

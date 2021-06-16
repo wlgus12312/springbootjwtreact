@@ -1,5 +1,7 @@
 package com.auc.main.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -22,6 +24,8 @@ import com.auc.main.service.Impl.JwtUserDetailsService;
 @CrossOrigin
 public class JwtAuthenticationController {
 	
+	private static Logger log = LoggerFactory.getLogger(JwtAuthenticationController.class);
+	
 	@Autowired
     private AuthenticationManager authenticationManager;
 	
@@ -39,6 +43,8 @@ public class JwtAuthenticationController {
             .loadUserByUsername(authenticationRequest.getUsername());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
+        
+        log.info("token : "+ token);
 
         return ResponseEntity.ok(new JwtResponse(token));
     }

@@ -46,11 +46,11 @@ public class WebConfig implements WebMvcConfigurer {
 		return new MappingJackson2JsonView();
 	}
 		
-//	@Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**")
-//                .allowedOrigins("http://localhost:3000");
-//    }
+	@Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:3000");
+    }
 
 	
 }
