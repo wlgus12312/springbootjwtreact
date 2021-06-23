@@ -39,8 +39,7 @@ public class MainController {
 	
 	@Resource
 	LoginUser loginUser;
-	
-    @PostMapping("/api/test")
+    
     @RequestMapping(value="/api/test", method=RequestMethod.POST)
 	public Map<Object, Object> test(ResolverMap resolverMap) throws Exception{
 		

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.auc.common.vo.ResolverMap;
 import com.auc.main.service.MainService;
 
 @Service("MainService")
@@ -38,5 +39,12 @@ public class MainServiceImpl implements MainService{
 		
 		return reList;
 	}
+
+	@Override
+	public Map<Object, String> selectUser() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
