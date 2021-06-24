@@ -39,87 +39,18 @@ public class MainController {
 	
 	@Resource
 	LoginUser loginUser;
-    
-    @RequestMapping(value="/api/test", method=RequestMethod.POST)
-	public Map<Object, Object> test(ResolverMap resolverMap) throws Exception{
-		
-    	log.info(resolverMap.toString());
-    	
-		ModelAndView mv = new ModelAndView();
-		
-		List<HashMap<Object, Object>> reList = new ArrayList<HashMap<Object, Object>>();
-		
-		HashMap<Object, Object> reMap1 = new HashMap<Object, Object>();
-		HashMap<Object, Object> reMap2 = new HashMap<Object, Object>();
-		
-		reMap1.put("id", "wlgus12312");
-		reMap1.put("name", "김지현");
-		reMap2.put("id", "brain");
-		reMap2.put("name", "브레인");
-				
-		reList.add(reMap1);
-		reList.add(reMap2);
-		
-		Map reMap = new HashMap();
-		reMap.put("userList", reList);
-        
-		return reMap;
-	}
-    
+
     @RequestMapping(value="/api/menuList", method=RequestMethod.POST)
 	public Map<Object, Object> menuList() throws Exception{
     
-    	List<Map<Object, Object>> reList = null;
-    	
-    	reList = mainService.selectMenuList();
-    	    	
-    	Map<Object, Object> reMap = new HashMap<Object, Object>();
-    	
-    	reMap.put("menuList", reList);
-    	
-    	return reMap;
+    	List<Map<Object, Object>> reList = null;    	
+    	reList = mainService.selectMenuList();    	    	
+    	Map<Object, Object> reMap = new HashMap<Object, Object>();    	
+    	reMap.put("menuList", reList);    	
+    	return reMap;     
     	
     }	
     
-    @RequestMapping(value="/api/login", method=RequestMethod.POST)
-    public  Map<Object, Object> login()throws Exception{
-    	
-    	Map<Object, Object> reMap = new HashMap<Object, Object>();
-    	
-    	loginUser.setId("test");
-    	
-    	log.info("login@@@@@" + loginUser.getId());
-    	
-    	reMap.put("data", "login");
-    	
-    	return reMap;
-    }
-    
-    @RequestMapping(value="/api/check", method=RequestMethod.POST)
-    public  Map<Object, Object> check()throws Exception{
-    	
-    	Map<Object, Object> reMap = new HashMap<Object, Object>();
-    	
-    	log.info("check@@@@@" + loginUser.getId());
-    	
-    	reMap.put("data", "check");
-    	
-    	return reMap;
-    }
-    
-    @RequestMapping(value="/api/testView", method=RequestMethod.POST)
-    public String testView()throws Exception{
-    	
-    	String t = "12345678 asdasd";
-    	int tCnt = t.indexOf(" ");
-    	
-    	t.substring(0, tCnt);
-    	
-    	log.info(t.substring(tCnt+1, t.length()));
-    	
-    	
-    	return "testView";
-    }
     
     
     
